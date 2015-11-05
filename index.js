@@ -17,7 +17,7 @@ const characterMapBase = {
     'ž': 'z'
 };
 
-const characterMap = Object.keys(characterMapBase).reduce((map, charGroup)=>{
+export const characterMap = Object.keys(characterMapBase).reduce((map, charGroup)=>{
     const replacement = characterMapBase[charGroup];
     charGroup.split('')
         .forEach((char)=> {

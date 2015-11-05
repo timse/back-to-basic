@@ -4,7 +4,7 @@
   "description": "Convert european special characters (wester latin) to basic latin",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --compilers js:mocha-traceur"
   },
   "repository": {
     "type": "git",
@@ -21,10 +21,15 @@
     "url",
     "safe"
   ],
-  "author": "timse",
+  "author": "Tim Sebastian @timse",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/timse/back-to-basic/issues"
   },
-  "homepage": "https://github.com/timse/back-to-basic#readme"
+  "homepage": "https://github.com/timse/back-to-basic#readme",
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "mocha": "^2.3.3",
+    "mocha-traceur": "^2.1.0"
+  }
 }
