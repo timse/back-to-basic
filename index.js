@@ -19,25 +19,33 @@ const characterMapBase = {
 };
 
 export const characterMap = Object.keys(characterMapBase).reduce((map, charGroup)=>{
-    const replacement = characterMapBase[charGroup];
-    charGroup.split('')
-        .forEach((char)=> {
-            map[char] = replacement;
-        });
+    // this is not entirely true, see ß/ẞ but holds true for the rest and doesnt break anything
+    const replacementLowerCase = characterMapBase[charGroup];
+    const replacementUpperCase = replacementLowerCase.toUpperCase();
 
-    const upperReplacement = replacement.toUpperCase();
-    charGroup.toUpperCase()
-        .replace(/[a-z]/gi, '')
-        .split('')
-        .forEach((char)=> {
-            /*
-             * needed as some browsers dont correctly
-             * uppercase "ß" to "SS/ẞ" but keep it a "ß" instead
-             */
-            if (!map[char]) {
-                map[char] = upperReplacement;
-            }
-        });
+    charGroup.split('')
+    .reduce((map, ch)=> {
+        const CH = ch.toUpperCase();
+        map[ch] = replacementLowerCase;
+
+        /*
+         * firefox uppercases "ß" to "ß" 
+         * this would make us replace all "ß" occurences with "SS" 
+         * which is just wrong
+         */
+        const doesNotExistYet = !map[CH];
+
+        /*
+         * chrome uppercases "ß" to "SS"
+         * however we dont want to replace "SS" as it can naturally occur
+         */
+        const isStillSpecial =  !/[a-z]/gi.test(CH);
+
+        if (doesNotExistYet && isStillSpecial) {
+            map[CH] = replacementUpperCase;
+        }
+        return map;
+    }, map);
 
     return map;
 }, {});
