@@ -36,7 +36,7 @@ As `back-to-basic` is UMD you can either require it or load it directly into you
 ```javascript
 import b2b from 'back-to-basic';
 
-b2b('thè qûìçk bròwñ ƒóx júmpš øvër ðë låžÿ dõg);
+b2b('thè qûìçk bròwñ ƒóx júmpš øvër ðë låžÿ dõg');
 // => "the quick brown fox jumps over the lazy dog"
 ```
 
@@ -45,7 +45,7 @@ b2b('thè qûìçk bròwñ ƒóx júmpš øvër ðë låžÿ dõg);
 ```javascript
 <script src="some/path/to/b2b.js"></script>
 <script>
-b2b('thè qûìçk bròwñ ƒóx júmpš øvër ðë låžÿ dõg);
+b2b('thè qûìçk bròwñ ƒóx júmpš øvër ðë låžÿ dõg');
 // => "the quick brown fox jumps over the lazy dog"
 </script>
 ```
