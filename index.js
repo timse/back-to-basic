@@ -9,6 +9,7 @@ const characterMapBase = {
     'òóôõø': 'o',
     'öœ': 'oe',
     'ß': 'ss',
+    'ẞ': 'SS',
     'š': 's',
     'þð': 'th',
     'ùúû': 'u',
@@ -22,15 +23,21 @@ export const characterMap = Object.keys(characterMapBase).reduce((map, charGroup
     charGroup.split('')
         .forEach((char)=> {
             map[char] = replacement;
-        }, map);
+        });
 
     const upperReplacement = replacement.toUpperCase();
     charGroup.toUpperCase()
         .replace(/[a-z]/gi, '')
         .split('')
         .forEach((char)=> {
-            map[char] = upperReplacement;
-        }, map);
+            /*
+             * needed as some browsers dont correctly
+             * uppercase "ß" to "SS/ẞ" but keep it a "ß" instead
+             */
+            if (!map[char]) {
+                map[char] = upperReplacement;
+            }
+        });
 
     return map;
 }, {});

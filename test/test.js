@@ -8,6 +8,10 @@ describe('back to basic', ()=> {
     it('should replace ä with ae as its basic latin representation', ()=>{
         b2b('ä').should.equal('ae');
     });
+    it('should replace ẞ with SS and ß with ss as its basic latin representation', ()=>{
+        b2b('ß').should.equal('ss');
+        b2b('ẞ').should.equal('SS');
+    });
     it('should also replace all other western latin special charaters with their basic latin representation', ()=>{
         const specialKeys = Object.keys(characterMap).join('');
         const expectedResults = Object.keys(characterMap).map((key)=> characterMap[key]).join('');
