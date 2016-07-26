@@ -1,6 +1,6 @@
 {
   "name": "back-to-basic",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Convert european special characters (wester latin) to basic latin",
   "main": "b2b.js",
   "typings": "index.d.ts",
